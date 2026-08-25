@@ -5,7 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  azureSubscription: 'YOUR-AZURE-SERVICE-CONNECTION'
+  azureSubscription: 'enterprise-ai-azure-connection'
   acrName: 'myaicr220412'
   acrLoginServer: 'myaicr220412.azurecr.io'
   imageName: 'enterprise-agentic-ai-backend'
