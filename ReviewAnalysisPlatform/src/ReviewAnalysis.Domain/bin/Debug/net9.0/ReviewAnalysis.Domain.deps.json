@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "ReviewAnalysis.Domain/1.0.0": {
+        "runtime": {
+          "ReviewAnalysis.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ReviewAnalysis.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
