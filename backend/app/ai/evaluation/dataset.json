@@ -1,0 +1,57 @@
+[
+  {
+    "id": "rag_001",
+    "type": "rag",
+    "input": "What is the return window for Sony WH-1000XM5 headphones?",
+    "expected_contains": ["30"],
+    "expected_source": "products.xlsx"
+  },
+  {
+    "id": "rag_002",
+    "type": "rag",
+    "input": "How long can a refund take to appear on my card?",
+    "expected_contains": ["3", "7"],
+    "expected_source": "refund-policy.pdf"
+  },
+  {
+    "id": "agent_001",
+    "type": "agent",
+    "input": "What is the status of order ORD-1001?",
+    "expected_tool": "lookup_order",
+    "expected_contains": ["Delivered"]
+  },
+  {
+    "id": "agent_002",
+    "type": "agent",
+    "input": "What is the standard refund policy?",
+    "expected_tool": "search_knowledge_base"
+  },
+  {
+    "id": "agent_003",
+    "type": "agent",
+    "input": "I want a refund for order ORD-1005 because I changed my mind.",
+    "expected_tool": "start_refund_request",
+    "expected_contains": ["approval"]
+  },
+  {
+    "id": "workflow_001",
+    "type": "refund_workflow",
+    "order_id": "ORD-1001",
+    "reason": "Customer changed their mind",
+    "expected_status": "CREATED"
+  },
+  {
+    "id": "workflow_002",
+    "type": "refund_workflow",
+    "order_id": "ORD-1002",
+    "reason": "Product is defective",
+    "expected_status": "WARRANTY_ELIGIBLE"
+  },
+  {
+    "id": "workflow_003",
+    "type": "refund_workflow",
+    "order_id": "ORD-1005",
+    "reason": "Customer wants a refund",
+    "expected_interrupt": true
+  }
+]

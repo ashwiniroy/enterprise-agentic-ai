@@ -1,0 +1,20 @@
+touch .dockerignor.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.env
+.env.*
+
+.git/
+.gitignore
+
+.DS_Store
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+*.log

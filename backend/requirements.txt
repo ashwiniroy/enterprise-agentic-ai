@@ -1,0 +1,49 @@
+# Web API
+fastapi
+uvicorn[standard]
+
+# Configuration
+pydantic
+pydantic-settings
+python-dotenv
+
+# Database
+sqlalchemy
+psycopg[binary]
+psycopg-pool
+asyncpg
+pgvector
+azure-postgresql-auth[sqlalchemy,psycopg3]
+
+# LangChain / Agentic AI
+langchain
+langchain-core
+langchain-community
+langchain-openai
+langchain-postgres
+langchain-text-splitters
+langgraph
+
+# OpenAI
+openai
+
+# Azure
+azure-identity
+azure-ai-projects
+azure-monitor-opentelemetry
+azure-monitor-opentelemetry-exporter
+
+# OpenTelemetry
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-instrumentation
+opentelemetry-instrumentation-fastapi
+
+# Document ingestion
+pypdf
+pandas
+openpyxl
+
+# Utilities
+python-dateutil
+python-multipart

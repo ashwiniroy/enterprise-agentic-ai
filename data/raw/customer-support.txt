@@ -1,0 +1,47 @@
+ENTERPRISE CUSTOMER SUPPORT KNOWLEDGE BASE
+
+1. ORDER SUPPORT
+Customers can contact support for questions about order status, delivery delays, missing items, damaged products, cancellations, and invoice requests.
+
+Order Status:
+- Processing: The order has been received and is being prepared.
+- Shipped: The order has left the fulfillment center.
+- Delivered: The carrier has marked the order as delivered.
+- Cancelled: The order was cancelled and will not be shipped.
+
+If an order is delayed by more than 5 business days beyond the estimated delivery date, support should verify the carrier status before offering a resolution.
+
+2. RETURNS
+Most eligible products can be returned within 30 calendar days from the delivery date.
+Products should be returned with their original accessories and packaging when reasonably possible.
+Products damaged through misuse may not qualify for a standard return.
+
+3. REFUNDS
+Approved refunds are returned to the original payment method.
+After approval, refunds are generally initiated within 2 business days.
+Banks and card providers may take an additional 3 to 7 business days to display the refund.
+
+4. WARRANTY SUPPORT
+Warranty coverage varies by product.
+Customers should provide the order number, product name, purchase date, and a description of the defect.
+Physical damage caused by accidents, misuse, or unauthorized modification is not covered by the standard manufacturer warranty.
+
+5. DAMAGED OR DEFECTIVE PRODUCTS
+If a customer receives a damaged product, support should request:
+- Order number
+- Product name
+- Description of the damage
+- Photographs when available
+
+For products reported defective after delivery, support should first check the product warranty and troubleshooting guidance.
+
+6. ESCALATIONS
+Escalate to a support specialist when:
+- A refund exceeds $500.
+- The customer disputes a previous refund decision.
+- A safety concern is reported.
+- The issue involves repeated failures after two support attempts.
+
+7. CUSTOMER PRIVACY
+Support agents should not request passwords, full payment-card numbers, or authentication secrets.
+Only collect the minimum information required to resolve the case.
