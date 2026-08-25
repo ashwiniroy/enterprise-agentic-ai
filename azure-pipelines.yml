@@ -1,0 +1,114 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  azureSubscription: 'YOUR-AZURE-SERVICE-CONNECTION'
+  acrName: 'myaicr220412'
+  acrLoginServer: 'myaicr220412.azurecr.io'
+  imageName: 'enterprise-agentic-ai-backend'
+  containerAppName: 'enterprise-ai-backend'
+  containerAppResourceGroup: 'DefaultResourceGroup-EAU'
+  dockerfilePath: 'backend/Dockerfile'
+  imageTag: '$(Build.BuildId)'
+
+stages:
+
+# ============================================================
+# CI
+# ============================================================
+
+- stage: CI
+  displayName: 'CI - Test and Build'
+  jobs:
+
+  - job: TestBackend
+    displayName: 'Test Backend'
+    steps:
+
+    - checkout: self
+
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.13'
+      displayName: 'Use Python 3.13'
+
+    - script: |
+        python -m pip install --upgrade pip
+        pip install -r backend/requirements.txt
+      displayName: 'Install dependencies'
+
+    - script: |
+        python -m compileall backend/app
+      displayName: 'Validate Python code'
+
+
+  - job: BuildAndPush
+    displayName: 'Build and Push Docker Image'
+    dependsOn: TestBackend
+
+    steps:
+
+    - checkout: self
+
+    - task: AzureCLI@2
+      displayName: 'Login to ACR and Build Image'
+      inputs:
+        azureSubscription: '$(azureSubscription)'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          az acr login --name $(acrName)
+
+          docker build \
+            -f $(dockerfilePath) \
+            -t $(acrLoginServer)/$(imageName):$(imageTag) \
+            -t $(acrLoginServer)/$(imageName):latest \
+            backend
+
+          docker push $(acrLoginServer)/$(imageName):$(imageTag)
+          docker push $(acrLoginServer)/$(imageName):latest
+
+
+# ============================================================
+# CD
+# ============================================================
+
+- stage: CD
+  displayName: 'CD - Deploy to Azure Container Apps'
+  dependsOn: CI
+  condition: succeeded()
+
+  jobs:
+
+  - job: DeployBackend
+    displayName: 'Deploy Backend'
+
+    steps:
+
+    - task: AzureCLI@2
+      displayName: 'Deploy to Container App'
+      inputs:
+        azureSubscription: '$(azureSubscription)'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          az containerapp update \
+            --name $(containerAppName) \
+            --resource-group $(containerAppResourceGroup) \
+            --image $(acrLoginServer)/$(imageName):$(imageTag)
+
+
+    - task: AzureCLI@2
+      displayName: 'Show deployed revision'
+      inputs:
+        azureSubscription: '$(azureSubscription)'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          az containerapp revision list \
+            --name $(containerAppName) \
+            --resource-group $(containerAppResourceGroup) \
+            -o table
